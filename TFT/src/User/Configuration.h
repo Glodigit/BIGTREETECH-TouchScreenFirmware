@@ -348,7 +348,7 @@
  *
  *   Options: [Marlin Mode: 0, Touch Mode: 1, Blocked Marlin Mode: 2, Blocked Touch Mode: 3]
  */
-#define DEFAULT_MODE 1  // Default: 1
+#define DEFAULT_MODE 2  // Default: 1
 
 /**
  * Serial Always ON
@@ -444,7 +444,7 @@
 #define EXTRUDER_COUNT  1  // Default: 1
 
 // For mixing extruder set to 1 (this option turns off auto detection of the number of extruders)
-#define MIXING_EXTRUDER 0  // Default: 0
+#define MIXING_EXTRUDER 1  // Default: 0
 
 /**
  * Fan Count
@@ -468,7 +468,7 @@
  *                bed:     [min: 20, max: 400]
  *                chamber: [min: 20, max: 200]
  */
-#define MAX_TEMP {275, 275, 275, 275, 275, 275, 150, 60}  // Default: {275, 275, 275, 275, 275, 275, 150, 60}
+#define MAX_TEMP {275, 275, 275, 275, 275, 275, 128, 60}  // Default: {275, 275, 275, 275, 275, 275, 150, 60}
 
 /**
  * Cold Extrusion Minimum Temperature
@@ -477,7 +477,7 @@
  *   Unit: [temperature in °C]
  *   Value range: [min: 20, max: 1000]
  */
-#define MIN_TEMP 180  // Default: 180
+#define MIN_TEMP 150  // Default: 180
 
 /**
  * Fan Maximum PWM Speed
@@ -916,8 +916,8 @@
  * Brightness levels for LCD.
  *   Options: [OFF: 0, 5%: 1, 10%: 2, 20%: 3, 30%: 4, 40%: 5, 50%: 6, 60%: 7, 70%: 8, 80%: 9, 90%: 10, 100%: 11]
  */
-#define LCD_BRIGHTNESS      11  // LCD brightness level (Default: 11)
-#define LCD_IDLE_BRIGHTNESS  5  // LCD brightness level when device is idle (Default: 5)
+#define LCD_BRIGHTNESS       5  // LCD brightness level (Default: 11)
+#define LCD_IDLE_BRIGHTNESS  1  // LCD brightness level when device is idle (Default: 5)
 
 /**
  * LCD Idle Time (only for TFT28/TFT35/TFT43/TFT50/TFT70 V3.0)
