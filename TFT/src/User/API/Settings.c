@@ -4,20 +4,17 @@
 SETTINGS infoSettings;
 MACHINE_SETTINGS infoMachineSettings;
 
-const uint8_t default_serial_port[]    = {SP_1, SP_2, SP_3, SP_4};
-const uint16_t default_max_temp[]      = MAX_TEMP;
-const uint16_t default_max_fan[]       = FAN_MAX;
-const uint16_t default_size_min[]      = {X_MIN_POS, Y_MIN_POS, Z_MIN_POS};
-const uint16_t default_size_max[]      = {X_MAX_POS, Y_MAX_POS, Z_MAX_POS};
-const uint16_t default_xy_speed[]      = {SPEED_XY_SLOW, SPEED_XY_NORMAL, SPEED_XY_FAST};
-const uint16_t default_z_speed[]       = {SPEED_Z_SLOW, SPEED_Z_NORMAL, SPEED_Z_FAST};
-const uint16_t default_ext_speed[]     = {EXTRUDE_SLOW_SPEED, EXTRUDE_NORMAL_SPEED, EXTRUDE_FAST_SPEED};
-const uint16_t default_pause_speed[]   = {NOZZLE_PAUSE_XY_FEEDRATE, NOZZLE_PAUSE_Z_FEEDRATE, NOZZLE_PAUSE_E_FEEDRATE};
-const uint16_t default_level_speed[]   = {LEVELING_XY_FEEDRATE, LEVELING_Z_FEEDRATE};
-const uint16_t default_preheat_ext[]   = PREHEAT_HOTEND;
-const uint16_t default_preheat_bed[]   = PREHEAT_BED;
-const uint8_t default_led_color[]      = {LED_R, LED_G, LED_B, LED_W, LED_P, LED_I};
-const uint8_t default_custom_enabled[] = CUSTOM_GCODE_ENABLED;
+const uint8_t default_serial_port[]  = {SP_1, SP_2, SP_3, SP_4};
+const uint16_t default_max_temp[]    = MAX_TEMP;
+const uint16_t default_max_fan[]     = FAN_MAX;
+const uint16_t default_size_min[]    = {X_MIN_POS, Y_MIN_POS, Z_MIN_POS};
+const uint16_t default_size_max[]    = {X_MAX_POS, Y_MAX_POS, Z_MAX_POS};
+const uint16_t default_xy_speed[]    = {SPEED_XY_SLOW, SPEED_XY_NORMAL, SPEED_XY_FAST};
+const uint16_t default_z_speed[]     = {SPEED_Z_SLOW, SPEED_Z_NORMAL, SPEED_Z_FAST};
+const uint16_t default_ext_speed[]   = {EXTRUDE_SLOW_SPEED, EXTRUDE_NORMAL_SPEED, EXTRUDE_FAST_SPEED};
+const uint16_t default_pause_speed[] = {NOZZLE_PAUSE_XY_FEEDRATE, NOZZLE_PAUSE_Z_FEEDRATE, NOZZLE_PAUSE_E_FEEDRATE};
+const uint16_t default_level_speed[] = {LEVELING_XY_FEEDRATE, LEVELING_Z_FEEDRATE};
+const uint8_t default_led_color[]    = {LED_R, LED_G, LED_B, LED_W, LED_P, LED_I};
 
 // Init settings data with default values
 void initSettings(void)
@@ -26,6 +23,7 @@ void initSettings(void)
   infoSettings.tx_slots               = TX_SLOTS;
   infoSettings.general_settings       = ((0 << INDEX_LISTENING_MODE) |
                                          (ADVANCED_OK << INDEX_ADVANCED_OK) |
+                                         (COMMAND_CHECKSUM << INDEX_COMMAND_CHECKSUM) |
                                          (EMULATED_M600 << INDEX_EMULATED_M600) |
                                          (EMULATED_M109_M190 << INDEX_EMULATED_M109_M190) |
                                          (EVENT_LED << INDEX_EVENT_LED) |
@@ -173,12 +171,12 @@ void initSettings(void)
     infoSettings.pause_feedrate[i]    = default_pause_speed[i];  // XY, Z, E
   }
 
-  for (int i = 0; i < FEEDRATE_COUNT - 1 ; i++)  // xy, z
+  for (int i = 0; i < FEEDRATE_COUNT - 1; i++)  // xy, z
   {
     infoSettings.level_feedrate[i]    = default_level_speed[i];
   }
 
-  for (int i = 0; i < LED_COLOR_COMPONENT_COUNT - 1 ; i++)
+  for (int i = 0; i < LED_COLOR_COMPONENT_COUNT - 1; i++)
   {
     infoSettings.led_color[i]         = default_led_color[i];
   }
@@ -226,10 +224,6 @@ void initMachineSettings(void)
   infoMachineSettings.babyStepping            = DISABLED;
   infoMachineSettings.buildPercent            = DISABLED;
   infoMachineSettings.softwareEndstops        = ENABLED;
-
-  // reset the state to restart the temperature polling process
-  // needed by parseAck() function to establish the connection
-  heatSetUpdateWaiting(false);
 }
 
 void setupMachine(FW_TYPE fwType)
@@ -354,5 +348,6 @@ bool getFlashSignStatus(int index)
   uint32_t len = sizeof(flash_sign);
 
   W25Qxx_ReadBuffer((uint8_t*)&cur_flash_sign, addr, len);
+
   return (flash_sign[index] == cur_flash_sign[index]);
 }
