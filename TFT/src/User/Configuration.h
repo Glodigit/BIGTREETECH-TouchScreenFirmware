@@ -469,7 +469,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define HEATED_CHAMBER 0  // Default: 0
+#define HEATED_CHAMBER 1  // Default: 0
 
 /**
  * Extruder Count
@@ -504,9 +504,9 @@
  *   Unit: [temperature in °C]
  *   Value range: hotend:  [min: 20, max: 1000]
  *                bed:     [min: 20, max: 400]
- *                chamber: [min: 20, max: 200]
+ *                chamber: [min: 20, max: 400]
  */
-#define MAX_TEMP {275, 275, 275, 275, 275, 275, 128, 60}  // Default: {275, 275, 275, 275, 275, 275, 150, 60}
+#define MAX_TEMP {300, 275, 275, 275, 275, 275, 128, 248}  // Default: {275, 275, 275, 275, 275, 275, 150, 60}
 
 /**
  * Cold Extrusion Minimum Temperature
