@@ -479,7 +479,7 @@
  *
  *   Value range: [min: 0, max: 6]
  */
-#define EXTRUDER_COUNT  1  // Default: 1
+#define EXTRUDER_COUNT  8  // Default: 1
 
 // For mixing extruder set to 1 (this option turns off auto detection of the number of extruders)
 #define MIXING_EXTRUDER 1  // Default: 0
@@ -1206,8 +1206,8 @@
 #define HEAT_WAIT_CMD   {"M109 T0", "M109 T1", "M109 T2", "M109 T3", "M109 T4", "M109 T5", "M190", "M191"}
 
 // Tool Change / Extruder Id
-#define TOOL_CHANGE {"T0", "T1", "T2", "T3", "T4", "T5"}
-#define EXTRUDER_ID {"E0", "E1", "E2", "E3", "E4", "E5"}
+#define TOOL_CHANGE {"T0", "T1", "T2", "T3", "T4", "T5", "T6", "T7"}
+#define EXTRUDER_ID {"E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7"}
 
 /**
  * Cooling Fans & Controller Fan
@@ -1222,8 +1222,8 @@
 #define SPEED_ID {"Sp.", "Fr."}  // (speed, flow rate)
 
 // Axes names displayed in Parameter Settings menu
-#define AXIS_DISPLAY_ID    {"X", "Y", "Z", "E0", "E1"}                                // (X, Y, Z, E0, E1)
-#define STEPPER_DISPLAY_ID {"X", "X2", "Y", "Y2", "Z", "Z2", "Z3", "Z4", "E0", "E1"}  // (X, X2, Y, Y2, Z, Z2, Z3, Z4, E0, E1)
+#define AXIS_DISPLAY_ID    {"X", "Y", "Z", "E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7"}                                // (X, Y, Z, E0, E1)
+#define STEPPER_DISPLAY_ID {"X", "X2", "Y", "Y2", "Z", "Z2", "Z3", "Z4", "E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7"}  // (X, X2, Y, Y2, Z, Z2, Z3, Z4, E0, E1)
 
 // Manual Leveling
 // Move to four corner points to Leveling manually (Point 1, Point 2, Point 3, Point 4).

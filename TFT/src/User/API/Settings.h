@@ -26,7 +26,7 @@ extern "C" {
 #define FONT_CHECK_SIGN       (FONT_FLASH_SIGN + WORD_UNICODE_ADDR + FLASH_SIGN_ADDR)
 
 #define MAX_SERIAL_PORT_COUNT 4
-#define MAX_EXT_COUNT         6
+#define MAX_EXT_COUNT         8
 #define MAX_HOTEND_COUNT      6
 #define MAX_HEATER_COUNT      (MAX_HOTEND_COUNT + 2)  // hotends + bed + chamber
 #define MAX_HEATER_PID_COUNT  (MAX_HOTEND_COUNT + 1)  // hotends + bed
