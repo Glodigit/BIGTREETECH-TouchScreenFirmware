@@ -789,8 +789,8 @@
  *                bed temp:    [min: 20, max: 400]
  */
 #define PREHEAT_LABELS {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}  // Default: {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}
-#define PREHEAT_HOTEND {200,   240,    230,   170,    220,   250}      // Default: {200,   240,    230,   170,    220,   250}
-#define PREHEAT_BED    { 60,    70,     90,    50,     50,    90}      // Default: { 60,    70,     90,    50,     50,    90}
+#define PREHEAT_HOTEND {200,   242,    230,   170,    220,   250}      // Default: {200,   240,    230,   170,    220,   250}
+#define PREHEAT_BED    { 60,    78,     90,    50,     50,    90}      // Default: { 60,    70,     90,    50,     50,    90}
 
 //================================================================================
 //============================ Power Supply Settings =============================
@@ -1120,7 +1120,7 @@
  */
 #define START_GCODE  "G28 XY R20\n"
 #define END_GCODE    "M104 S0\nM140 S0\nM107\nM18\n"
-#define CANCEL_GCODE "M104 S0\nM140 S0\nG28 XY R10\nM107\nM18\n"
+#define CANCEL_GCODE "M107\nM104 S0\nM140 S0\nG28 XY R3\nG0 Y305 F7200\n"
 
 //====================================================================================================
 //============================ Settings Configurable At Compile Time Only ============================
